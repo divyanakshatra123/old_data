@@ -1,0 +1,205 @@
+
+https://howtodoinjava.com/spring-cloud/spring-cloud-api-gateway-zuul/
+read this shit 
+
+Micro services 
+client with microservices
+what happens if our location is changed ,
+
+API gateway ..:sit in between client and services
+which is called netflix zuul api gateway 
+
+what happens when the whole system goes down .. 
+Micro service architecture 
+Domain driven design --- u think n write the code that the concept is a real world entity
+
+Single responsibility
+common closure
+gather together those  things that chhange for the same reason,separate the things that change for different reasons
+ if  
+ we have 3  microservices then each should be independent 
+
+Communications between Microservices 
+
+Two forms of communication 
+
+REACTIVE VS ORCHESTRATION
+
+if we choose one  coupling 
+orchestration or reactive
+
+|
+|
+|
+request to authenication service andthen goes to another service B, and then C
+if service A is down then cant go to service b,service c
+its synchronous
+
+
+Reactive 
+|
+|
+its not flow controlled centralized,
+that is all the  services are parallel
+if u wanna add  anothe service u can do it comfortably 
+
+
+
+Hybrid Pattern 1
+
+service a is involved in orchestrations
+and service c b and a will be in reactive
+
+
+Hybrid pattern 2 
+
+
+Coordinator produces the some commands  to drive flow
+
+ex: kafka between producers and consumer will listen to the messages
+
+
+
+Api
+
+Netflix Zuul for api gateway service
+
+api gateway in cluster can also happen
+
+---add dependency of starter-zuul
+
+---in main class application @EnableZuulProxy
+
+---in application properties
+
+zuul:
+   routes:
+       movieservice:
+		path:/movieservice/** (starts wit this)		url:send it to this port
+
+	authenticationservice:
+		path:/authentication-servicce/**
+		url:send it to this port 
+
+
+BLUE GREEN DEPLOYMENT
+
+you are a microservices 
+all u're microsrvices is runnning on version 1 
+api will switch and update the version 
+without requiring to stop ur service 
+
+
+
+Canary release 
+
+u dont want everythng to be switched you start by minimal amount of bunch is imported to theee new version 
+slowly slowly everything will get updated to new version
+
+
+Circuit breaker
+
+if one of the services goes down 
+then api gate way stop sending the data 
+when something goes wrong in one flat then u dont need to let the whole apartment to go down right ?
+
+
+
+
+
+
+
+		Service CONFIGURATION MANAGEMENT 
+
+you will movie service wil ahve the user authentication 
+own set of configuration 
+like
+mongo db
+sql
+etc
+configuration gets scattered then we need one centralised location where all the lie in one file
+
+
+		
+config server -- 3 separate microseervice
+
+add a dependency 
+spring cloud config server
+
+Application properties
+
+#port the server wil be using 
+server.port=8891
+#repo where all the config files stored
+spring.cloud.config.server.git.uri=somegithublink
+
+
+In main class application 
+
+just enable
+@EnableConfigServer  
+we have to tell them where the config server is running 
+spring .cloud.config.uri=https://.....
+
+
+
+		SERVICE DISCOVERY 
+
+key challenging is how each sdervice  discover each other 
+
+api gateway shhould be able to to do this 
+A needs to know the location of B and C and vice versa 
+
+to address this problem 
+we havediscovery service registry
+EUREKA
+
+whenever any micro service it registers wit eureka any microservice needs toc communicate into B it will look up thhe registory 
+and connects to appropriate micro service
+
+Dependency
+
+cloud starter netflix eureka server
+
+add properties :
+
+server.port=9090
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+(client of the disovery service)
+
+Building the microservices
+
+SCaling microservices(must be stateless) can be done by
+
+using docker based containers
+
+
+How do we manage a fleet of microservices?
+A)using docker
+How do we aggregate logs/metrics/Slas across microservices?
+A)spring boot actuater 
+ 
+
+
+
+
+
+						
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+

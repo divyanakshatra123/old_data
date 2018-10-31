@@ -1,0 +1,23 @@
+Import HttpClientModule, FormsModule and RouterModule in app.module.ts. Also, include these modules in imports.
+
+Also, create a service by using the following command.
+
+ng g service movie
+
+It will create a file called movie.service.ts. Import it into your app.module.ts and include MovieService as a provider 
+
+As we have created Routes, in app.component.html, we will have to use router outlet. Simply paste this in there.
+
+<router-outlet></router-outlet>
+
+Create the home component.
+
+ng g component home
+
+Now open home.component.ts. Import the MovieService.
+
+Then subscribe to all the methods in the MovieService to fetch the data.
+
+Finally, display it in the home.component.html using string interpolation.
+
+Below each movie displayed, we will add a View Details button and fetch the id of the movie using routerLink.

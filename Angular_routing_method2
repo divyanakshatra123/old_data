@@ -1,0 +1,89 @@
+create another app-routing.module.ts
+
+and import ng module and component from core
+and import RouterModule and routes from router
+
+and then create an instance of routes and add all the paths and components needed---- this is called Configuration
+
+add 
+
+@NgModule() its a function
+
+in that in an array []
+
+add elements in flower brackets
+[{}]
+
+{imports:[RouterModule.ForRoot(instance of the routes)]}
+like this below
+--------------------------------------------------------------
+
+@NgModule(
+    {
+        declarations:[],
+        imports:[
+            RouterModule.forRoot(routes)
+        ], 
+        providers:[],
+        bootstrap:[],
+        exports:[RouterModule]
+    }
+)
+export class ApproutingModule{
+
+}
+
+-------------------------------------------------------------
+import the approutingmodule in the main appmodule.ts file
+
+
+if the path is not matched corrct it in the file in the navigate function
+
+if u click on that name it should go to display the values
+
+instead of routerlink and
+
+use a function on clicking 
+and declare the function passing a variable and create a new instance of the router
+and do this.router.navigate(['write the whole path',variable.id])
+must add the router outlet in the html page because we are navigating
+
+u can export a variable too
+
+so in the routing module itself 
+
+u create 
+
+export const routing(any name) = [] ==> add all the components here
+
+and remove all the components in the main app ngmodule and in the import too
+
+and add this const varialbe name in the declaration of the main class
+
+
+
+
+OPTIONAL ROUTING
+
+oka back button pettuko 
+and then hanndler method
+andulo
+this.somename= this.userid ? this
+
+
+if u want to hover the value that u already clicked in the future page see the OPTIONAL ROUTE PARAMETERS
+
+
+
+RELATIVE NAVIGATION:
+When we change the pathh in routing madiulke hen u have t o change in all the paths
+instead of using as a children u can simply add
+
+this.router.navigate([the name after slash],{relativeto:this.activatedrouterinstance})
+
+if u want to go back one segment
+the the nam e after slash
+"../"
+
+
+

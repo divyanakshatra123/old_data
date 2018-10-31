@@ -1,0 +1,118 @@
+
+DRY PRINCIPLE:
+DO NOT REPEAT YOURSELF
+
+SINGLE RESPONSIBILTY
+
+IST STEP:
+
+to create a new service
+
+ng g s name_of_the_service
+
+
+and add a function to return the list of users 
+and remove the list off the main user component 
+
+2ND STEP
+
+REGISTER VIA INJECTOR
+
+register the service at module level
+ 
+include the services in providers array
+
+3RD STEP 
+
+add dependency
+
+in the userlist and add the constructor instance
+
+@injector in the service module is used cause the service must be used in other , so that the data gets injected
+
+
+in a real world application 
+
+we need to retrieve the data from http server
+
+Observable : sequence of ittems arrive asynchronously overtime
+
+STEPS:
+
+1. http get request from empservice
+2. Receive the observable and cash into the employee array
+3.  subscribe to the observable and add it to the emplist 
+4. assign it to a local variable and use it 
+
+Rxjs external library for using the observables
+
+
+first go to the app module  and add HTTPCLIENTMODULE
+
+and import the same in imports
+
+now in the service add the HttpClient module in the service class and write an instance in the constructor too
+
+so in the getusers()
+
+this.(instance of httpclient).get("url") ====> 1
+
+if u want to access the path in the url another way is u can create a json file and add the data there and then u can retrieve by the 
+
+
+
+Now, we have to show the individual movie details. Now we have already fetched the movie id in Step 4.
+
+Create the movie component.
+
+ng g component movie
+
+In app.module.ts, you can see in the appRoutes, a path is created to display the individual movie, movie/:movieID.
+
+Now, in movie.component.ts, we have to make use of Route parameters. For that, we have to import ActivatedRoute, ParamMap from @angular/router.
+
+We have to store the value of the movieID (which we already fetched in Step 4) by the help of params, and then pass that value to the function getMovie() (see step 2) to fetch the details of the individual movie.
+
+
+
+but here it returns an observable object so we should retrieve via interface class and add all the parameters like name ,id and all
+
+now we will import this in our app routing module and in 1 before get typecast it to .get<usertype[]>(url)
+
+the service gets the observable r8 so import observable as well from rxjs
+
+now in  the userlist we should get this observable and subscribe to it 
+
+this.employeeservice_instance.getusers.subscribe(somename => this.userarray_whichweleftempty = somename)
+
+------------------------------------------------------------------------------------------------------
+
+HTTP ERROR RESPONSE
+
+import it in the service and add import the httperrorresponse
+
+import {Observable} from 'rxjs';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import {HttpClient,HttpErrorResponse} from '@angular/common/http';
+
+in the getusers():observable<array>{
+return this.blah blah .catcch(errormethod)
+}
+
+and then in  error method(pass a instance of httperrorresponse)
+
+and then in that method
+{
+	
+}
+
+look into error message
+
+
+
+
+
+
+
+

@@ -1,0 +1,78 @@
+import{RouterModule,Routes} from '@angular/router'
+ add this in app.module.ts 
+
+config the file in the app module
+
+const appRoutes: Routes =[
+{path: 'home',component:HomeComponent},
+{path: 'user',component:UserComponent}
+]
+each item in the array is goona be route configuration for each route
+
+add all the paths above the ng module 
+
+and then import this in 
+
+imports:[ RouterModule.forRoot(appRoutes)]
+
+load all the routes in the app.component.html
+
+in between <router-outlet></router-outlet> this is where our alll routes
+now
+
+**if you load the page with localhost:9899/home or about it will work
+but only localhost:9899 wil not worlk
+
+so to make it work add ==>app module in the instance of routes add
+{path:'',redirectTo:'/home',pathMatch:'full'}
+
+pathMatch:'full' is COMPULSORY
+
+**if u want to add after localhost:9899/ghfccds(anytthing like that)
+
+then also it should reedirect to home so
+add 
+
+{path:'**',redirectTo:'/home',pathMatch:'full'}
+
+**if u want to add localhost:9899/user/list
+
+and so on
+{path:'user' ,children:[{path:'list',component:UserList}]}
+
+
+*** if you want to go to that page on clicking instead  of maually entering the url
+
+go to the app html page
+add the list of the elements in the anchor tag
+<a routerLink ="/home"> similar to this
+
+**if you want to go localhost:8809/details/divya
+
+then it show divyas details
+so we have to pass a parameter
+in app module
+we write 
+{path:'detail/:name',component:UserComponent}
+
+detail should match  compulsoryly as it is the name of the parameter which we are passing
+
+
+Activated Route add this in usercomponent
+
+
+ROUTE PARAMETERS
+
+parammap observable
+
+
+-------------------------------------------------------------
+
+Create the new module to app-routing.module.ts
+
+import ngmodule
+router module
+all the components
+
+
+

@@ -1,0 +1,180 @@
+Docker
+
+host os : os which is runing in our laptop
+Hyperviser and jaron that u have app's
+
+versions of java prog may be diff 
+so we aretrying to develo app in 2  diff environments... like 2 diff systems have didff process
+and the results may be diff
+How can u ship the movie cruiser
+ex: git hub
+
+how do we ensure that the development done in same way 
+
+VIRTUAL MACHINE : hyperviser who does all the 
+we cant run more than one vm
+
+So docke removed all this shit and  replaced withdocker engine 
+we can create container images .. anybody who use the docke engine can run our file 
+
+light docker images are replaces vm
+
+------image and contaner
+java.class is a image (contains instruction)
+and if we run it we get a object which is stored in CONTAINER
+
+IMAGE---- contains instructions
+
+raw laptop lo first install os and run mongo db
+
+instead of all this 
+
+for mongo--- image of os and another layer of installing mngo and  running mngo
+instead of all this u can simply call for image of mongo which have all this
+
+image-- <name>:<tag>
+
+insert,restart and retrieve
+
+
+to pull the mongo db from the docker:sudo docker pull mongo:3.2-jessie
+to check the images installed:sudo docker images
+to run:sudo docker run mongo:3.2-jessie
+to check status:sudo docker ps
+to stop:sudo docker stop tender_wilson
+history:sudo docker ps -a
+status: sudo systemctl status mongodb
+to map the port:mongo --host localhost --port 27017:27017
+run mongo inside docker:sudo docker run -p 27017:27017 -d mongo
+
+
+docker file m "from openjdk:10-jdk
+and then open terminal 
+and mvn clean package and then open target and then paste the jar files insede the movie service folder where docker file is present
+
+to run build :sudo docker build -t movie-service:v1 .
+now run it 
+sudo docker run -d movie:v1
+sudo docker ps 
+sudo docker logs thenameassigned
+to map our local movie-service :sudo docker run -p 8092:8080 -d movie:v1
+
+docker compose:tool for running for multicontainer docker appli
+3 steps:  1. each service in docker file
+2) relationship to docker compose in yml file
+
+
+
+docker compose--------> how many services, version of mongo db and images ,ports,contsainer name,network mode
+
+build : the movie-service(give the path of the docker file)
+restart:always(to start specified service)(if u fail again restart)
+depends_on: database name like sql or mongo db
+ports:- 8080:8080 
+expose: -8080  (port to be out of this container so we can use this in postman)
+check the status of the mongo (should be inactive)
+database name should be same asin docker and docker compose file
+
+
+
+commands;
+docker-compose up
+
+
+
+````````````````````````````````````````````````````` DOCKER VIDEO``````````````````````````````````````````````````````````````````````````````
+
+How to ship software :
+like git hub and all shit 
+
+docker is container : here we are shipping docker 
+ like on efo rbackend and one for frontend 
+we can ship this container to any client with the help of docker
+
+Docker:to build ship amd run any app anywhere 
+two thing that are important are docker image and docker container
+
+
+Image:
+
+a read only template
+includes all the dependencies(such as framework) plus deployment and execution configuration to be used by a container runtime
+.usually derives from multiple base images that are layers stacked on top of each other to form the container's file system
+.its immutable once it has been created
+
+Container
+
+.a runnable instance of a docker image
+. can be created started stopped and deleted
+
+what is docker image?
+
+an image defines a docker container
+
+
+CONCEPT OF LAYERS: image is comprised of so many layers
+each layer has an ID
+
+If u want a mongo running on docker
+
+i will pull the base ubuntu image 
+and on that image we will install mongo 
+ other way is u pull mongo image
+
+each images have id's first 12 characters
+
+
+COMMANDS: 
+try to list all the images: Docker images
+each image has a tag
+
+Command to view all the hash values of images :docker images -q --no-trunc
+
+to know how many layers a image has : docker history -q mysql | wc -1
+
+Image tag names : [registorthost/][username/]name[:tag]
+
+for registory host : registry.hub.docker.com is inferred
+
+for 'tag' : 'latest'  is default and inferred
+
+full tag iis registry.hub.docker.com/mongo-latest
+
+docker mongo :
+
+steps:
+1.pulling the image
+2.running the docker image 
+3.passsing env. variables
+4.port mapping 
+5.volume mapping
+
+Pulling the image
+
+Docker hub : to pull the image
+
+Dockerize : im going to use mongo not locally but somewhere in the container
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

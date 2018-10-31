@@ -1,0 +1,431 @@
+
+Angular 1st video
+
+Framework to build client application in html ,css,javascript
+
+application build in angular are more testible
+
+Angular 2nd video
+
+Front end and back end
+
+(UI)           Data-processing
+html
+css
+typescript
+
+u dont save the data in angular
+thats why data is stored in server
+API= application programming interface
+
+back end we have one or more databases
+this is where we implement business logic
+
+font end = presentation aspect
+
+so angular is a frontend 
+
+video 3
+
+node js 
+runtime environment to run outside the browser
+
+install
+Angular cli = angular command line interface 
+used to create a angular project
+
+to install :sudo npm install -g @angular/cli
+if u dont put -g here it will be only accessible to the folder where it is installed
+sudo:forexecuting as an administrator
+
+ng --version
+to check
+
+-TO CREATE A PROJECT: ng new name_of_the_project (no sudo here)
+and TO RUN ON A SERVER: go to that file and do ng serve
+
+
+
+
+
+src/app/:Angular application files go here.
+
+Ships with the "Hello Angular" sample's AppComponent, AppModule, a component unit test (app.component.spec.ts), and the bootstrap file, main.ts.
+
+Try the sample application / download example and the unit test / download example as live examples.
+
+e2e/: End-to-end (e2e) tests of the application, written in Jasmine and run by the protractor e2e test runner.
+
+Initialized with an e2e test for the "Hello Angular" sample.
+
+node_modules/:The npm packages installed with the npm install command.
+
+.editorconfig
+.git/
+.gitignore
+.travis.yml  :Tooling configuration files and folders. Ignore them until you have a compelling reason to do otherwise.
+
+CHANGELOG.md	:The history of changes to the QuickStart repository. Delete or ignore.
+
+
+favicon.ico: The application icon that appears in the browser tab.
+
+
+karma.conf.js:Configuration for the karma test runner described in the Testing guide.
+
+karma-test-shim.js:Script to run karma with SystemJS as described in the Testing guide.
+
+COMMAND FOR RUNNING A SERVER:ng serve
+and open the link of the local hostr
+
+open src-->app-->app.components.ts and u can change the title of the page dynamically 
+
+HOT MODULE REPLACEMENT (HMR) its a web pack 
+this will automatically reloads the page
+
+Y ANGULAR?
+it builds a platform and framework for building client applications in html and typescript
+
+
+
+
+APP HAS A ROOT MODULE THAT ENABLES BOOTSTRAPPING AND TYPICALLY HAS MANY FEATURES
+
+---COMPONENTS HAVE VIEWS, arranged hierarchically
+---COMPONENTS USE SERVICES ..PROVIDES FUNCTIONALITY 
+can be injected into components as dependencies 
+
+components and services are simply classes that provide metadata that tells angular how to use them
+
+
+-->METADATA provided by the COMPONENT classes associates with a TEMPLATE that defines view which combines ordinary HTML with angular directives and binding mark up WHICH ACTUALLY ALLOWS ANGULAR TO MODIFY THE HTML CODE BEFORE RENDERING THE DISPLAY
+
+--->META DATA provides by SERVICES classes provides info angular needs to make it available to COMPONENTS through dependency injection ===> it gives info that COMPONENT CLASS needs for angular through DI(.PROVIDES FUNCTIONALITY 
+can be injected into components as dependencies)
+
+ANGULAR provides the ROUTER SERVICE to help u define navigation through views
+
+MODULES:
+
+Angular Ngmodules : 
+
+
+the basic building blocks of an angular application are NgModules,
+
+ng modules lo components yokka compilation context
+ANGULAR APP IS DEFINED BY SET OF NG MODULES
+
+Ng module associate COMPONENTS to corresponding SERVICES code
+
+Ng modules can import fuunctionality from other Ng modules
+ex: to use router service in ur app,u import ROUTER Ngmodule
+
+EVERY APP HAS A ROOT MODULE named "App module" which provides the BOOTSTRAP MECHANISM(html higher version) to launch the application
+
+
+COMPONENTS:
+
+app has atleast has one component , the root component  taht connects a component hierarchy with DOM model(flow showing the code flow like in html the html tag omes first and then the head and then the tittle so on
+
+@component() :The @Component() decorator identifies the class immediately below it as a component, and provides the template and related component-specific metadata.
+
+Decorators are functions that modify JavaScript classes. Angular defines a number of decorators that attach specific kinds of metadata to classes, so that the system knows what those classes mean and how they should work.
+
+TEMPLATES,DIRECTIVE,AND DATA BINDING
+
+Template combines HTML with ANGULAR MARKUP that can modify html elements befor they are displayed
+
+templates provides logic and binding  markup connects your application data and DOM
+
+
+There are two types of data binding
+
+	EVENT binding lets ur app RESPOND to USERINPUT
+
+	Property binding lets you to interpolate(something of diif naturte into something else) the values that are computed from ur  application data into HTML  
+
+
+
+Before a view is displayed, Angular evaluates the directives and resolves the binding syntax in the template to modify the HTML elements and the DOM, 
+
+
+SERVICES AND DEPENDENCY INJECTION:
+
+For data or logic that isn't associated with a specific view, and that you want to share across components, you create a service class. A service class definition is immediately preceded by the @Injectable() decorator. The decorator provides the metadata that allows your service to be injected into client components as a dependency.
+
+ROUTING
+
+
+The Angular Router NgModule provides a service that lets you define a navigation path among the different application states and view hierarchies in your app. It is modeled on the familiar browser navigation conventions:
+	
+== Enter a URL in the address bar and the browser navigates to a corresponding page.
+
+== Click links on the page and the browser navigates to a new page.
+
+== Click the browser's back and forward buttons and the browser navigates backward and forward through the history of pages you've seen.
+
+The router maps URL-like paths to views instead of pages.
+
+To define navigation rules, you associate navigation paths with your components. 
+
+An NgModule describes how the application parts fit together. Every application has at least one Angular module, the root module that you bootstrap to launch the application. By convention, it is usually called AppModule.
+
+The @NgModule decorator identifies AppModule as an NgModule class. @NgModule takes a metadata object that tells Angular how to compile and launch the application.
+
+declarations—this application's lone component.
+
+imports—import BrowserModule to have browser specific services such as DOM rendering, sanitization, and location.
+
+providers—the service providers.
+
+bootstrap—the root component that Angular creates and inserts into the index.html host web page.
+
+The default application created by the Angular CLI only has one component, AppComponent, so it is in both the declarations and the bootstrap arrays.
+
+THE DECLARATIONS ARRAY
+The module's declarations array tells Angular which components belong to that module. As you create more components, add them to declarations.
+
+
+You must declare every component in exactly one NgModule class.
+
+Declarables are components, directives and pipes(default values or formatting). All of a module's declarables must be in the declarations array.
+
+
+These declared classes are visible within the module but invisible to components in a different module unless they are exported from this module and the other module imports this one.
+
+declarations: [
+  YourComponent,
+  YourPipe,
+  YourDirective
+],
+
+A declarable can only belong to one module, so only declare it in one @NgModule. When you need it elsewhere, import the module that has the declarable you need in it.
+
+ONLY @NGMODULE REFERENCES GO IN THE IMPORTS ARRAY.
+\
+
+Export it from the file where you wrote it.
+Import it into the appropriate module.
+Declare it in the @NgModule declarations array.
+
+````````````````````example```````````
+
+import { Directive } from '@angular/core';
+
+@Directive({
+  selector: '[appItem]'
+})
+export class ItemDirective {
+// code goes here
+  constructor() { }
+
+}
+
+THE KEY POINT HERE IS THAT YOU HAVE TO EXPORT IT SO YOU CAN IMPORT IT ELSEWHERE.
+
+ Next, import it into the NgModule, in this example app.module.ts, with a JavaScript import statement:
+
+src/app/app.module.ts
+
+import { ItemDirective } from './item.directive';
+
+And in the same file, add it to the @NgModule declarations array:
+
+
+declarations: [
+  AppComponent,
+  ItemDirective
+],
+
+
+THE IMPORTS ARRAY
+
+The module's imports array appears exclusively in the @NgModule metadata object. It tells Angular about other NgModules that this particular module needs to function properly.
+
+THE BOOTSTRAP ARRAY
+
+The application launches by bootstrapping the root AppModule, which is also referred to as an ENTRYCOMPONENT. Among other things, the bootstrapping process creates the component(s) listed in the bootstrap array and inserts each one into the browser DOM.
+
+While you can put more than one component tree on a host web page, most applications have only one component tree and bootstrap a single root component.
+
+This one root component is usually called AppComponent and is in the root module's bootstrap array.
+
+
+COMPONENT:
+
+first step is create a component
+
+register it in a module
+
+add an element in html markup 
+
+under app folder add courses.component.ts file
+
+and write
+inorder for the angular to see this class u first expor it
+and add a decorator "component" to convert this into component
+
+import{Component} from '@angular/core';
+
+@Component({ add one or more properties to tell angular how this component works
+like 
+1ST STEP:
+
+selector:'' //in css if we wanna refernce an element 
+
+<courses> then in '' u write "courses" or
+
+<div class ="courses"> in this '' u write ".courses"
+
+<div id ="blah"> in this '' u write "#blah"
+or u can create the new component
+
+2ND STEP:
+
+template:'<h2>Courses</h2>'(html markup for the component above in selector"
+
+
+3RD STEP:
+
+go to app.module.ts
+
+and add this file name in declarations tag 
+
+})
+
+export class NameofthefileComponent{
+}
+
+
+But where are we goin to add this elementt like we created a new tag in selector and add it to template
+
+==> go to app.component.html file 
+delete all
+and add ur own created tag which u wrote in the slector 
+
+
+	TASK 3 MODULE 2
+
+
+Instead of manually createing the a new component file
+
+you can open the terminal (ctrl+`) and write
+
+COMMAND: ng g c course
+
+	TASK 4 MODULE 2
+
+no data or logic is added
+so define a files in the class
+
+ex:
+title ="jhdss";
+and put it in template: {{tittle}}
+
+
+	TASK 5 MODULE 2
+
+courses list add cheyalante
+template: `<h2> </h2>`
+
+use " ` "
+ to add more lines in the template
+u can create a list and add all the directives which manipulates the DOM
+add a dom element or remove a dom element
+
+whenever u are writing the dom directive that u are modifying u should prefix it with an astrisk 
+
+*ngFor="" // its a for loop
+
+
+let x in a[] is similar to 
+
+let course of courses here
+
+
+	TASK 6 MODULE 2
+
+here we are hardcoding the input ..so we will take that from the server
+
+but that will be tightly couples
+so logic for this component should not have detailed logic so what happens to the button on clicked are written in services
+
+	SERVICE
+
+Dependency injection: inject  the component ,we need an instance of service and in the constructor class we do our own work 
+
+write the constructor 
+
+constructor(private data:DataService)
+
+data is an object of DataService 
+
+THIS IS ONE LINE IS EQUAL TO
+
+private data:DataService
+constructor( data:DataService)
+{
+return this.data;
+}
+
+But this is not enough 
+
+in  component you have to specify PROVIDERS : [DataService]
+
+
+ila add cheyali
+
+but this is also not enough u have to do something with the data object
+
+or u instaed of the providers add it to the bootsrap component of app module but the root component create only one instnce and the child class also gets the same properties in the child class
+
+to logg the things u do
+
+import { Logger }     from '../logger.service';
+
+@Injectable({
+  providedIn: 'root',
+})
+
+export class HeroService {
+ 
+  constructor(private logger: Logger) {  }
+ 
+  getHeroes() {
+    this.logger.log('Getting heroes ...');
+    return HEROES;
+  }
+
+The constructor asks for an injected instance of Logger and stores it in a private field called logger. The getHeroes() method logs a message when asked to fetch heroes.
+
+Notice that the Logger service also has the @Injectable() decorator, even though it might not need its own dependencies. In fact, the @Injectable() decorator is required for all services.
+
+providedIn:'root': When you use providedIn:'root', you are configuring the root injector for the app, which is the injector for AppModule. The actual root of the entire injector hierarchy is a platform injector that is the parent of app-root injectors. 
+
+
+@Injectable-level configuration
+
+The @Injectable() decorator identifies every service class. The providedIn metadata option for a service class configures a specific injector (typically root) to use the decorated class as a provider of the service. When an injectable class provides its own service to the root injector, the service is available anywhere the class is imported.
+
+
+IF WE WANT TO ADD A SERVICE :
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class HeroService {
+  constructor() { }
+}
+
+
+
+@Input in the child 
+ex:
+@input() data:string;
+
+
+
+
+

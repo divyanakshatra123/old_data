@@ -1,0 +1,291 @@
+			Java Script
+
+Declarations
+
+There are three kinds of declarations in JavaScript.
+
+var
+Declares a variable, optionally initializing it to a value.
+
+let
+Declares a block-scoped, local variable, optionally initializing it to a value.
+
+const
+Declares a block-scoped, read-only named constant.
+
+
+The names of variables, called identifiers, conform to certain rules.
+
+The undefined value behaves as false when used in a boolean context.
+
+When you evaluate a null variable, the null value behaves as 0 in numeric contexts and as false in boolean contexts. 
+
+````````````````SCOPE`````````````
+
+if (true) {
+  let y = 5;
+}
+console.log(y);  // ReferenceError: y is not defined
+
+if (true) {
+  var x = 5;
+}
+console.log(x);  // x is 5
+
+Another unusual thing about variables in JavaScript is that you can refer to a variable declared later, without getting an exception. This concept is known as hoisting;
+However, variables that are hoisted return a value of undefined. So even if you declare and initialize after you use or refer to this variable, it still returns undefined.
+ex:
+console.log(x === undefined); // true
+var x = 3;
+
+
+
+You can create a read-only, named constant with the const keyword.
+
+
+the properties of objects assigned to constants are not protected, so the following statement is executed without problems.
+
+const MY_OBJECT = {'key': 'value'};
+MY_OBJECT.key = 'otherValue';
+
+
+Also, the contents of an array are not protected, so the following statement is executed without problems.
+
+const MY_ARRAY = ['HTML','CSS'];
+MY_ARRAY.push('JAVASCRIPT');
+console.log(MY_ARRAY); //logs ['HTML','CSS','JAVASCRIPT'];
+
+
+
+In statements involving other operators, JavaScript does not convert numeric values to strings. For example:
+
+'37' - 7 // 30
+'37' + 7 // "377"
+
+
+'1.1' + '1.1' // '1.11.1'
+(+'1.1') + (+'1.1') // 2.2   
+// Note: the parentheses are added for clarity, not required.
+
+```````````````Array literals
+:var coffees = ['French Roast', 'Colombian', 'Kona'];
+
+You do not have to specify all elements in an array literal. If you put two commas in a row, the array is created with undefined for the unspecified elements. The following example creates the fish array:
+
+var fish = ['Lion', , 'Angel'];
+
+```````````````Boolean literals
+
+
+
+var car = { manyCars: {a: 'Saab', b: 'Jeep'}, 7: 'Mazda' };
+
+console.log(car.manyCars.b); // Jeep
+console.log(car[7]); // Mazda
+
+OBJECT LITERALS
+
+var unusualPropertyNames = {
+  '': 'An empty string',
+  '!': 'Bang!'
+}
+console.log(unusualPropertyNames.'');   // SyntaxError: Unexpected string
+console.log(unusualPropertyNames['']);  // An empty string
+console.log(unusualPropertyNames.!);    // SyntaxError: Unexpected token !
+console.log(unusualPropertyNames['!']); // Bang!
+	-----------or------------
+var foo = {a: 'alpha', 2: 'two'};
+console.log(foo.a);    // alpha
+console.log(foo[2]);   // two
+//console.log(foo.2);  // SyntaxError: missing ) after argument list
+//console.log(foo[a]); // ReferenceError: a is not defined
+console.log(foo['a']); // alpha
+console.log(foo['2']); // two
+
+
+You can insert a quotation mark inside a string by preceding it with a backslash. This is known as escaping the quotation mark. For example:
+
+var quote = "He read \"The Cremation of Sam McGee\" by R.W. Service.";
+console.log(quote);
+
+
+____________________________________________________ OBJECT_____________________________________________
+
+var myCar = new Object();
+myCar.make = 'Ford';
+myCar.model = 'Mustang';
+myCar.year = 1969;
+
+
+
+@@@@@@@@@@@@@@@  there are three native ways to list/traverse object properties:
+
+for...in loops
+
+This method traverses all enumerable properties of an object and its prototype chain
+
+Object.keys(o)
+
+This method returns an array with all the own (not in the prototype chain) enumerable properties' names ("keys") of an object o.
+
+Object.getOwnPropertyNames(o)
+
+This method returns an array containing all own properties' names (enumerable or not) of an object o.
+
+This array has two elements with values and one empty element (fish[0] is "Lion", fish[1] is undefined, and fish[2] is "Angel").
+
+
+Alternatively, you can create an object with these two steps:
+
+Define the object type by writing a constructor function. There is a strong convention, with good reason, to use a capital initial letter.
+Create an instance of the object with new.
+To define an object type, create a function for the object type that specifies its name, properties, and methods. For example, suppose you want to create an object type for cars. You want this type of object to be called Car, and you want it to have properties for make, model, and year. To do this, you would write the following function:
+
+function Car(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+}
+Notice the use of this to assign values to the object's properties based on the values passed to the function.
+
+
+Defining properties for an object typeSection
+
+
+
+You can add a property to a previously defined object type by using the prototype property. This defines a property that is shared by all objects of the specified type, rather than by just one instance of the object. The following code adds a color property to all objects of type Car, and then assigns a value to the color property of the object car1.
+
+Car.prototype.color = null;
+car1.color = 'black';
+
+
+
+Using this for object referencesSection
+
+
+
+The following code illustrates how getters and setters can extend the Date prototype to add a year property to all instances of the predefined Date class. It uses the Date class's existing getFullYear and setFullYear methods to support the year property's getter and setter.
+
+These statements define a getter and setter for the year property:
+
+var d = Date.prototype;
+Object.defineProperty(d, 'year', {
+  get: function() { return this.getFullYear(); },
+  set: function(y) { this.setFullYear(y); }
+});
+These statements use the getter and setter in a Date object:
+
+var now = new Date();
+console.log(now.year); // 2000
+now.year = 2001; // 987617605170
+console.log(now);
+// Wed Apr 18 11:13:25 GMT-0700 (Pacific Daylight Time) 2001
+
+
+function UserException(message) {
+  this.message = message;
+  this.name = 'UserException';
+}
+
+// Make the exception convert to a pretty string when used as a string 
+// (e.g. by the error console)
+UserException.prototype.toString = function() {
+  return this.name + ': "' + this.message + '"';
+}
+
+// Create an instance of the object type and throw it
+throw new UserException('Value too high');
+ex: 
+
+
+var square = function(number) { return number * number; };
+var x = square(4); // x gets the value 16
+However, a name can be provided with a function expression and can be used inside the function to refer to itself, or in a debugger to identify the function in stack traces:
+
+var factorial = function fac(n) { return n < 2 ? 1 : n * fac(n - 1); };
+
+console.log(factorial(3));
+
+
+ex:
+Function expressions are convenient when passing a function as an argument to another function. The following example shows a map function that should receive a function as first argument and an array as second argument. 
+
+function map(f, a) {
+  var result = [],i; // Create a new Array
+  for (i = 0; i != a.length; i++)
+    result[i] = f(a[i]);
+  return result;
+
+
+ex:
+n the following code our function receives a function defined by a function expression and executes it for every element of the array received as a second argument. 
+
+function map(f, a) {
+  var result = []; // Create a new Array
+  var i; // Declare variable
+  for (i = 0; i != a.length; i++)
+    result[i] = f(a[i]);
+  return result;
+}
+var f = function(x) {
+   return x * x * x; 
+}
+var numbers = [0, 1, 2, 5, 10];
+var cube = map(f,numbers);
+console.log(cube);
+Function returns: [0, 1, 8, 125, 1000].
+
+
+
+
+ex:
+Using the arguments objectSection
+The arguments of a function are maintained in an array-like object. Within a function, you can address the arguments passed to it as follows:
+
+arguments[i]
+where i is the ordinal number of the argument, starting at zero. So, the first argument passed to a function would be arguments[0]. The total number of arguments is indicated by arguments.length.
+
+Using the arguments object, you can call a function with more arguments than it is formally declared to accept. This is often useful if you don't know in advance how many arguments will be passed to the function. You can use arguments.length to determine the number of arguments actually passed to the function, and then access each argument using the arguments object.
+
+For example, consider a function that concatenates several strings. The only formal argument for the function is a string that specifies the characters that separate the items to concatenate. The function is defined as follows:
+
+function myConcat(separator) {
+   var result = ''; // initialize list
+   var i;
+   // iterate through arguments
+   for (i = 1; i < arguments.length; i++) {
+      result += arguments[i] + separator;
+   }
+   return result;
+}
+You can pass any number of arguments to this function, and it concatenates each argument into a string "list":
+
+// returns "red, orange, blue, "
+myConcat(', ', 'red', 'orange', 'blue');
+
+// returns "elephant; giraffe; lion; cheetah; "
+myConcat('; ', 'elephant', 'giraffe', 'lion', 'cheetah');
+
+// returns "sage. basil. oregano. pepper. parsley. "
+myConcat('. ', 'sage', 'basil', 'oregano', 'pepper', 'parsley');
+
+*************document.write(); =compulsory to print in console
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~ visit this https://regex101.com/
+
+* = 0 or more
++ = 1 or more
+? = 0 or 1
+/^ $/ starts with ^ ends with  $
+/w = alphanumeric 
+/d = digits
+/d{num} === restricted to num number of digits
+/s white space
+
+[] = include regex
+}
+
+
+var keys = Object.keys(myObject);
+.keys will give the properties
+

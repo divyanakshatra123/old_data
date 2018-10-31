@@ -1,0 +1,61 @@
+Test runner
+
+what dependency required to use test runner:test
+
+default it comes 
+
+@Springboottest:  we need all the appl context which includes the path of the bean (integration test)
+
+
+unit test:::integration test
+
+integration test u need an DB server
+
+autowiring the repository is enough i.e we dont need the entire bean .. so we need only the bean which has database operations
+
+---------------? @before annotation 
+
+---------------? @datajpatest
+
+
+------------------------------  To test the repository use @dataMongotest
+
+PURE UNIT TEST 
+
+service depends on repository layer 
+@Mock  // test double  not the actual re[ository 
+
+initializing the mock : Mockito Annotations.initmocks(this)
+@InjectMock ~~ @autowire
+when(somebody is calling save ) caling the mock 
+
+verify==== how many times our mock calls the user repository save method or some other method
+ex:verify(userrepository.times(1).save(user);
+
+In controller what we will mock --- service 
+------------------------? what is the diff between @mockbean(controllertest) and @mock(servicetest)
+Mockmvcrequestbuilder.post(url similar to post man)
+.contenttype(json)
+.content(user)
+.andExpected(mockmvcresultmatchers.status.iscreated
+.anddo(mockmvcresulthandler.print
+
+
+FROM openjdk:10-jre
+
+ADD ./target/movie-service-0.0.1-SNAPSHOT.jar /usr/app/movie-service-0.0.1-SNAPSHOT.jar
+
+WORKDIR usr/app
+
+ENTRYPOINT ["java","-jar", "movie-service-0.0.1-SNAPSHOT.jar"]
+
+delete this file
+
+
+
+ERROR: unable to load application context : Remove @enableswagger in application and create andother if u want to use it
+
+
+
+
+

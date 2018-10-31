@@ -1,0 +1,50 @@
+
+  <ul>
+  <li *ngFor ="let movie of movies">
+    <h3>{{movie.name}}</h3>
+    
+<div>
+  <img class="card-img-top img-fluid" src="https://image.tmdb.org/t/p/w200/{{ movie.url }}" alt="{{ movie.name }}" style="height: 400px; border-radius: 2%;">
+ <br>
+  <strong>Summary: </strong> {{ movie.summary }}
+  <br>
+  <button (click)= "delete(movie)">delete</button>
+  <br>
+  <strong>Comment: </strong>  {{movie.comment}}
+  <br>
+  <input #in (keyup.enter)="updateComment(in.value,movie)">
+  <br>
+  
+  <button (click) = "updateComment(in.value,movie)">updateComment </button>
+  <br>
+  
+</div> 
+ <br>
+
+
+
+  </li>
+</ul>  
+
+<!-- <div layout="row" layout-wrap class="demo-content" *ngFor ="let movie of movies">
+  
+      <h3>{{movie.name}}</h3>
+      <br>
+   
+    <img class="card-img-top img-fluid" src="https://image.tmdb.org/t/p/w200/{{ movie.url }}" alt="{{ movie.name }}" style="height: 400px; border-radius: 2%;">
+    <br>
+  <strong>Summary: </strong> {{ movie.summary }}
+  <br>
+  <button (click)= "delete(movie)">delete</button>
+  <br>
+  <strong>Comment: </strong>  {{movie.comment}}
+  <br>
+  <input #in (keyup.enter)="updateComment(in.value,movie)">
+  <br>
+  
+  <button (click) = "updateComment(in.value,movie)">updateComment </button>
+  </div>
+  
+</div>  -->
+<app-delete [movieget] = "deleteMovie"></app-delete>
+<router-outlet></router-outlet>

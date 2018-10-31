@@ -1,0 +1,61 @@
+H2,JPA DATA BASES
+go to   https://start.spring.io/   this link and add all the dependencies you need 
+and then generate the project and extract it
+
+IF SOMETIMES YOU HAVE CURRUPTED DEPENDENCIES THEN DELETE .m2 folder and download all
+
+
+last lo pom file lo maven plugin will create all the jar files automatically 
+
+for the whole program .... which is called uberjar 
+
+Springbootapplication
+is a mixture of configuration and enable auto configuration and componentscan
+
+
+ENABLE AUTO CONFIG
+looks into the class part and create a default configuration 
+i.e if u find the h2 database just do the configuration 
+
+Component scan ---- scans it com.stactrorute.user service + sall its subpackages
+
+which will scan all the methods which have  @component 
+which has all 
+
+,enable... everythng check thiiis one once 
+
+
+it will store it in beanfactory or application context wherever @autowired is present it will add to ur code 
+
+
+ADD THE JSP DEPENDENCY 
+
+
+ENTITY will be unique
+and add ID
+read about this
+
+Pure rest service into layers because each layer has its own responsibilty
+repo layout,controller layout ,service layout.
+
+
+Status code use carefully .
+
+Using swagger we write the documentatin of whatever our program doing 
+Exception : cusstom exceptions musst be written 
+Validation: put it in the controller
+
+
+in the terminal mvn clean package
+
+autowired via prooperty ,getter and setter.constructor only do it via contructor theenu dontt need to bother about the already saved object n the preevious retrieval
+ctrl+h delete the m2 folder
+
+
+
+go to app properties in resource and change the service..port to someotherthan 8080
+
+
+
+ 
+
